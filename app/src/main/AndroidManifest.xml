@@ -19,7 +19,27 @@
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_second"
+            android:logo="@drawable/ic_menu_search"
             android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="com.example.artests.sherlock.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.artests.sherlock.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ThirdActivity"
+            android:label="@string/title_activity_third"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="com.example.artests.sherlock.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.artests.sherlock.MainActivity" />

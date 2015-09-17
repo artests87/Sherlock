@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static  final private  int CHOOSE_THIEF=0;
-
+    private static final int CHOOSE_THIEF=0;
+    private static final String SA="com.example.artests.sherlock.SecondActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick (View v){
-        Intent questionIntent=new Intent(MainActivity.this,SecondActivity.class);
+        Intent questionIntent=new Intent(SA);
         startActivityForResult(questionIntent,CHOOSE_THIEF);
     }
 
