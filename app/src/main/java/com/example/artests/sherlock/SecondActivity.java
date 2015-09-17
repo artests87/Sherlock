@@ -6,22 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
 
-    static  final private  int CHOOSE_THIEF=0;
-
+    public final static String THIEF="com.example.artests.sherlock.THIEF";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_second, menu);
         return true;
     }
 
@@ -39,25 +37,22 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void onClick (View v){
-        Intent questionIntent=new Intent(MainActivity.this,SecondActivity.class);
-        startActivityForResult(questionIntent,CHOOSE_THIEF);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        TextView textViewThief=(TextView)findViewById(R.id.textViewThief);
-        if (requestCode==CHOOSE_THIEF){
-            if (resultCode==RESULT_OK){
-                String thiefName=data.getStringExtra(SecondActivity.THIEF);
-                textViewThief.setText(thiefName);
-            }
-            else{
-                textViewThief.setText("");
-            }
+    public void onRadioClick(View v){
+        Intent answerIntent=new Intent();
+        switch (v.getId()){
+            case R.id.radioButtonDog:
+                answerIntent.putExtra(THIEF,getResources().getString(R.string.radioButtonDog));
+                break;
+            case R.id.radioButtonCrow:
+                answerIntent.putExtra(THIEF,getResources().getString(R.string.radioButtonCrow));
+                break;
+            case R.id.radioButtonCat:
+                answerIntent.putExtra(THIEF,getResources().getString(R.string.radioButtonCat));
+                break;
+            default:
+                break;
         }
+        setResult(RESULT_OK,answerIntent);
+        finish();
     }
 }
